@@ -1,0 +1,62 @@
+{
+    "ReRoutes": [
+      //auth api config
+      {
+        "DownstreamPathTemplate": "/api/hortus/story/get/{postcode}/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7000
+          }
+        ],
+        "UpstreamPathTemplate": "/api/hortus/story/get/{postcode}/{id}",
+        "UpstreamHttpMethod": [
+          "GET"
+        ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer",
+          "AllowedScopes": []
+        }
+      },
+      {
+        "DownstreamPathTemplate": "/api/authenticate/login",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 6000
+          }
+        ],
+        "UpstreamPathTemplate": "/authenticate/login",
+        "UpstreamHttpMethod": [ "POST" ]
+      },
+      {
+        "DownstreamPathTemplate": "/api/authenticate/register",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 6000
+          }
+        ],
+        "UpstreamPathTemplate": "/authenticate/register",
+        "UpstreamHttpMethod": [ "POST" ]
+      },
+      {
+        "DownstreamPathTemplate": "/api/authenticate/validate",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 6000
+          }
+        ],
+        "UpstreamPathTemplate": "/identity/validate",
+        "UpstreamHttpMethod": [ "GET" ]
+      }
+    ],
+    "GlobalConfiguration": {
+  
+    }
+  }
